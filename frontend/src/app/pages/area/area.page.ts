@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { FormControl } from '@angular/forms';
 import { combineLatest, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { EskomApiService } from '../../services/eskom-api.service';
 
 @Component({
   selector: 'app-area',
@@ -17,7 +18,10 @@ export class AreaPage implements OnInit {
   areas = [];
   public searchField: FormControl;
   public areaList$: Observable<Area[]>;
-  constructor(private alertCtrl: AlertController) {
+  constructor(
+    private alertCtrl: AlertController,
+    private eskomApi: EskomApiService
+  ) {
     this.searchField = new FormControl('');
   }
 
@@ -28,7 +32,14 @@ export class AreaPage implements OnInit {
 
     // we need to fetch all the areas from API
     // const areaList$ = collectionData(query(collection(this.firestore, 'foodList')));
+    this.eskomApi.searchSuburbs('magudu').subscribe((res) => {
+      console.log('look 👀:', res);
+      this.areas = [...res];
+    });
+
     const areaList$ = [];
+
+    console.log('data here: ', this.areas);
 
     this.areaList$ = combineLatest([areaList$, searchTerm$]).pipe(
       map(([areaList, searchTerm]) =>
