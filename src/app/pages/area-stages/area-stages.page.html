@@ -1,10 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <div style="padding-left:20px;">
-    <ion-icon name="arrow-back-outline"></ion-icon>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home">Back</ion-back-button>
+      </ion-buttons>
+    <!-- <ion-icon name="arrow-back-outline"></ion-icon> -->
   </div>
+  <div slot="end" style="padding-right:9px;">
     <ion-title>Load Shed Stages</ion-title>
-    <div slot="end" style="padding-right:9px;">
 <ion-icon name="ellipsis-vertical-outline"  id="nested-button"></ion-icon>
 <ion-popover trigger="nested-button" [dismissOnSelect]="true">
   <ng-template>
