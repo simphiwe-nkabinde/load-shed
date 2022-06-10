@@ -1,3 +1,16 @@
 .column{
     margin-top: 5rem;
 }
+
+ion-button { 
+    --box-shadow: 0 0 5px rgba(0,0,0,0.6);
+}
+
+ion-card-content.ion-toolbar > p:first-child{
+    font-weight: bold;
+}
+
+ion-card-content.ion-toolbar{
+    color: #fff;
+    background-color: #52CC7A;
+}

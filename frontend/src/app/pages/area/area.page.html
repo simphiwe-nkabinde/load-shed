@@ -5,7 +5,7 @@
       <ion-icon slot="end" name="help-circle-outline"></ion-icon>
     </ion-buttons>
     <ion-buttons slot="start">
-      <ion-back-button onclick="history.back()"></ion-back-button>
+      <ion-back-button defaultHref="/landing" onclick="history.back()"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
   <ion-toolbar>
@@ -20,7 +20,7 @@
 
 <ion-content fullscreen>
   <ion-list lines="none">
-    <!-- <ion-item *ngFor="let area of areas"> -->
+    <!-- <ion-item *ngFor=" let area of areas"> -->
     <!-- <ion-label>{{ area.name }}</ion-label> -->
     <ion-item *ngFor="let area of areas">
       <ion-label>{{ area.Name }}</ion-label>
