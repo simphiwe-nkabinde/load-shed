@@ -4,7 +4,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    redirectTo: 'landing',
+    pathMatch: 'full'
   },
   {
     path: 'area',
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'area-stages',
     loadChildren: () => import('./pages/area-stages/area-stages.module').then( m => m.AreaStagesPageModule)
+  },
+  {
+    path: 'landing',
+    loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
   }
 ];
 @NgModule({
