@@ -5,7 +5,8 @@
       <ion-icon slot="end" name="help-circle-outline"></ion-icon>
     </ion-buttons>
     <ion-buttons slot="start">
-      <ion-back-button onclick="history.back()"></ion-back-button>
+      <!-- <ion-back-button onclick="history.back()"></ion-back-button> -->
+      <ion-back-button defaultHref="landing"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
   <ion-toolbar>
@@ -20,11 +21,13 @@
 
 <ion-content fullscreen>
   <ion-list lines="none">
-    <!-- <ion-item *ngFor="let area of areas"> -->
-    <!-- <ion-label>{{ area.name }}</ion-label> -->
-    <ion-item *ngFor="let area of areas">
+    <ion-item
+      *ngFor="let area of areas"
+      (click)="presentAlertAddAreaConfirm(area.Id, area.Name, area.ProvinceName)"
+    >
       <ion-label>{{ area.Name }}</ion-label>
-      <ion-label>{{ area.MunicipalityName }}</ion-label>
+      <ion-label>{{ area.ProvinceName }}</ion-label>
+      <!-- <ion-note slot="end" color="secondary">99</ion-note> -->
     </ion-item>
   </ion-list>
 
