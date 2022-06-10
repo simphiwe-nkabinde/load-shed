@@ -11,13 +11,8 @@ import { EskomApiService } from '../../services/eskom-api.service';
   styleUrls: ['./area.page.scss'],
 })
 export class AreaPage implements OnInit {
-  // areas = [
-  //   { name: 'Joburg', stage: 5 },
-  //   { name: 'Pretoria', stage: 3 },
-  // ];
   areas = [];
   public searchField: FormControl;
-  public areaList$: Observable<Area[]>;
   constructor(
     private alertCtrl: AlertController,
     private eskomApi: EskomApiService
@@ -26,30 +21,18 @@ export class AreaPage implements OnInit {
   }
 
   ngOnInit() {
-    const searchTerm$ = this.searchField.valueChanges.pipe(
-      startWith(this.searchField.value)
-    );
+    this.searchVolume();
+  }
 
-    // we need to fetch all the areas from API
-    // const areaList$ = collectionData(query(collection(this.firestore, 'foodList')));
-    this.eskomApi.searchSuburbs('magudu').subscribe((res) => {
-      console.log('look 👀:', res);
-      this.areas = [...res];
-    });
-
-    const areaList$ = [];
-
-    console.log('data here: ', this.areas);
-
-    this.areaList$ = combineLatest([areaList$, searchTerm$]).pipe(
-      map(([areaList, searchTerm]) =>
-        areaList.filter(
-          (areaItem) =>
-            searchTerm === '' ||
-            areaItem.name.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      )
-    );
+  searchVolume() {
+    if (this.searchField.value) {
+      this.eskomApi.searchSuburbs(this.searchField.value).subscribe((res) => {
+        this.areas = [...res];
+        // console.log('Im here 📍', this.areas);
+      });
+    } else {
+      this.areas = [];
+    }
   }
 
   async presentAlertConfirm() {
