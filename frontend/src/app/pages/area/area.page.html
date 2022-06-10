@@ -5,13 +5,15 @@
       <ion-icon slot="end" name="help-circle-outline"></ion-icon>
     </ion-buttons>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="home" onclick="history.back()"></ion-back-button>
+      <ion-back-button defaultHref="landing"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
   <ion-toolbar>
     <ion-searchbar
       showCancelButton="focus"
       [formControl]="searchField"
+      class="searchbar"
+      (ngModelChange)="searchVolume()"
     ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
@@ -20,8 +22,9 @@
   <ion-list lines="none">
     <!-- <ion-item *ngFor="let area of areas"> -->
     <!-- <ion-label>{{ area.name }}</ion-label> -->
-    <ion-item *ngFor="let area of areaList$ | async">
-      <ion-label>{{ area.name }}</ion-label>
+    <ion-item *ngFor="let area of areas">
+      <ion-label>{{ area.Name }}</ion-label>
+      <ion-label>{{ area.MunicipalityName }}</ion-label>
     </ion-item>
   </ion-list>
 
