@@ -5,6 +5,7 @@ import { combineLatest, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { EskomApiService } from '../../services/eskom-api.service';
 import { SearchSuburb } from 'eskom-loadshedding-api';
+import { Router, ActivatedRoute,NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-area',
@@ -16,7 +17,8 @@ export class AreaPage implements OnInit {
   public searchField: FormControl;
   constructor(
     private alertCtrl: AlertController,
-    private eskomApi: EskomApiService
+    private eskomApi: EskomApiService,
+    private route: Router
   ) {
     this.searchField = new FormControl('');
   }
@@ -86,6 +88,7 @@ export class AreaPage implements OnInit {
             // console.log(this.areas.filter((area) => area.Id === id));
             const place = this.areas.filter((area) => area.Id === id);
             localStorage.setItem('location', JSON.stringify(place));
+            this.route.navigateByUrl('/')
           },
         },
       ],

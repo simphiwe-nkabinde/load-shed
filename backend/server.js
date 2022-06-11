@@ -5,7 +5,7 @@ const app = express()
 const cors = require('cors')
 const port = 3000
 
-app.use(cors({origin: 'http://localhost:8100'}))
+app.use(cors({origin: 'http://localhost:4200'}))
 app.use(express.json())
 
 //get Current Status

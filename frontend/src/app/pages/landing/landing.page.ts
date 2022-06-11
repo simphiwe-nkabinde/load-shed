@@ -16,7 +16,9 @@ export class LandingPage implements OnInit {
   }
 
   getAllAreas(){
-    // this.areas = localStorage.getItem('areas');
+    // console.log(JSON.parse(localStorage.getItem('location')))
+    console.log(localStorage.getItem('location'))
+    this.areas = JSON.parse(localStorage.getItem('location'));
   }
 
 }
