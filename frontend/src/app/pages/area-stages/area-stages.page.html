@@ -1,401 +1,360 @@
 <ion-header>
   <ion-toolbar>
-    <div style="padding-left:20px;" class="d-flex align-items-center">  
+    <div style="padding-left: 20px" class="d-flex align-items-center">
       <ion-title>Load Shed Stages</ion-title>
-      <ion-icon name="arrow-back-outline" size="large" onclick="history.back()" style="cursor: pointer"></ion-icon>
+      <ion-icon
+        name="arrow-back-outline"
+        size="large"
+        onclick="history.back()"
+        style="cursor: pointer"
+      ></ion-icon>
     </div>
-    <div slot="end" style="padding-right:9px;">
-<ion-icon name="ellipsis-vertical-outline" role="button" style="cursor: pointer" id="nested-button"></ion-icon>
-<ion-popover trigger="nested-button" [dismissOnSelect]="true">
-  <ng-template>
-    <ion-content>
-      <ion-list>
-        <ion-item [button]="true" [detail]="false">
-          <ion-label>Share</ion-label>
-        </ion-item>
-        <ion-item [button]="true" [detail]="false">
-          <ion-label>Disable Alerts</ion-label>
-        </ion-item>
-        <ion-item [button]="true" [detail]="false">
-          <ion-label>Delete</ion-label>
-        </ion-item>
-        <ion-item [button]="true" [detail]="false">
-          <ion-label>Schedule Problem</ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ng-template>
-</ion-popover>
-</div>
+    <div slot="end" style="padding-right: 9px">
+      <ion-icon
+        name="ellipsis-vertical-outline"
+        role="button"
+        style="cursor: pointer"
+        id="nested-button"
+      ></ion-icon>
+      <ion-popover trigger="nested-button" [dismissOnSelect]="true">
+        <ng-template>
+          <ion-content>
+            <ion-list>
+              <ion-item [button]="true" [detail]="false">
+                <ion-label>Share</ion-label>
+              </ion-item>
+              <ion-item [button]="true" [detail]="false">
+                <ion-label>Disable Alerts</ion-label>
+              </ion-item>
+              <ion-item [button]="true" [detail]="false">
+                <ion-label>Delete</ion-label>
+              </ion-item>
+              <ion-item [button]="true" [detail]="false">
+                <ion-label>Schedule Problem</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <br>
-  <div style="padding-left:20px;">
+  <br />
+  <div style="padding-left: 20px">
     <ion-label>
-      <h1>Bram Fischerville Ext 1</h1>
-      <p>Eskom Direct, City of Johannesburg, Gauteng</p>
+      <h1>{{location.Name}}</h1>
+      <p>
+        Eskom Direct, {{ location.MunicipalityName }}, {{location.ProvinceName}}
+      </p>
     </ion-label>
   </div>
-  <br>
-  <ion-item>
-  <ion-label>
-    <h1>All Stages</h1>
-  </ion-label>
-  <ion-select ok-text="Okay" cancel-text="Nah">
-    <ion-select-option value="all stages">All Stages</ion-select-option>
-    <ion-select-option value="stage 1">Stage 1</ion-select-option>
-    <ion-select-option value="stage 2">Stage 2</ion-select-option>
-    <ion-select-option value="stage 3">Stage 3</ion-select-option>
-    <ion-select-option value="stage 4">Stage 4</ion-select-option>
-    <ion-select-option value="stage 5">Stage 5</ion-select-option>
-    <ion-select-option value="stage 6">Stage 6</ion-select-option>
-    <ion-select-option value="stage 7">Stage 7</ion-select-option>
-    <ion-select-option value="stage 8">Stage 8</ion-select-option>
-  </ion-select>
-</ion-item>
-<br>
-<div style="padding-left:20px;">
-  <ion-label>
-    <h1>Monday</h1>
-    <p>2022-06-13</p>
-  </ion-label>
-</div>
-<br>
+  <br />
+  <div *ngIf="!noLoadshedding">
+    <ion-item>
+      <ion-label>
+        <h1>All Stages</h1>
+      </ion-label>
+      <ion-select ok-text="Okay" cancel-text="Nah">
+        <ion-select-option value="all stages">All Stages</ion-select-option>
+        <ion-select-option value="stage 1">Stage 1</ion-select-option>
+        <ion-select-option value="stage 2">Stage 2</ion-select-option>
+        <ion-select-option value="stage 3">Stage 3</ion-select-option>
+        <ion-select-option value="stage 4">Stage 4</ion-select-option>
+        <ion-select-option value="stage 5">Stage 5</ion-select-option>
+        <ion-select-option value="stage 6">Stage 6</ion-select-option>
+        <ion-select-option value="stage 7">Stage 7</ion-select-option>
+        <ion-select-option value="stage 8">Stage 8</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  <br />
+  <div style="padding-left: 20px">
+    <ion-label>
+      <h1>Monday</h1>
+      <p>2022-06-13</p>
+    </ion-label>
+  </div>
+  <br />
   <ion-grid>
     <ion-row>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="success">Stage 1</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          12:00 - 14:30
-          20:00 - 22:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="warning">Stage 2</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          12:00 - 14:30
-          20:00 - 22:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="secondary">Stage 3</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 06:30
-          12:00 - 14:30
-          20:00 - 22:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="danger">Stage 4</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 06:30
-          12:00 - 14:30
-          20:00 - 22:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="primary">Stage 5</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 06:30
-          12:00 - 14:30
-          20:00 - 00:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="tertiary">Stage 6</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 06:30
-          12:00 - 14:30
-          20:00 - 00:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="medium">Stage 7</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 08:30
-          12:00 - 14:30
-          20:00 - 00:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="dark">Stage 8</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 08:30
-          12:00 - 14:30
-          20:00 - 00:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="success">Stage 1</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content> 12:00 - 14:30 20:00 - 22:30 </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="warning">Stage 2</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content> 12:00 - 14:30 20:00 - 22:30 </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="secondary">Stage 3</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 06:30 12:00 - 14:30 20:00 - 22:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="danger">Stage 4</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 06:30 12:00 - 14:30 20:00 - 22:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="primary">Stage 5</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 06:30 12:00 - 14:30 20:00 - 00:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="tertiary">Stage 6</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 06:30 12:00 - 14:30 20:00 - 00:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="medium">Stage 7</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 08:30 12:00 - 14:30 20:00 - 00:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="dark">Stage 8</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 08:30 12:00 - 14:30 20:00 - 00:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
     </ion-row>
   </ion-grid>
-  <br>
-<div style="padding-left:20px;">
-  <ion-label>
-    <h1>Tuesday</h1>
-    <p>2022-06-14</p>
-  </ion-label>
-</div>
-<br>
+  <br />
+  <div style="padding-left: 20px">
+    <ion-label>
+      <h1>Tuesday</h1>
+      <p>2022-06-14</p>
+    </ion-label>
+  </div>
+  <br />
   <ion-grid>
     <ion-row>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="success">Stage 1</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          12:00 - 14:30
-          20:00 - 22:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="warning">Stage 2</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          12:00 - 14:30
-          20:00 - 22:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="secondary">Stage 3</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 06:30
-          12:00 - 14:30
-          20:00 - 22:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="danger">Stage 4</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 06:30
-          12:00 - 14:30
-          20:00 - 22:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="primary">Stage 5</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 06:30
-          12:00 - 14:30
-          20:00 - 00:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="tertiary">Stage 6</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 06:30
-          12:00 - 14:30
-          20:00 - 00:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="medium">Stage 7</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 08:30
-          12:00 - 14:30
-          20:00 - 00:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="dark">Stage 8</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 08:30
-          12:00 - 14:30
-          20:00 - 00:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="success">Stage 1</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content> 12:00 - 14:30 20:00 - 22:30 </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="warning">Stage 2</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content> 12:00 - 14:30 20:00 - 22:30 </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="secondary">Stage 3</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 06:30 12:00 - 14:30 20:00 - 22:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="danger">Stage 4</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 06:30 12:00 - 14:30 20:00 - 22:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="primary">Stage 5</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 06:30 12:00 - 14:30 20:00 - 00:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="tertiary">Stage 6</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 06:30 12:00 - 14:30 20:00 - 00:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="medium">Stage 7</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 08:30 12:00 - 14:30 20:00 - 00:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="dark">Stage 8</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 08:30 12:00 - 14:30 20:00 - 00:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
     </ion-row>
   </ion-grid>
-  <br>
-<div style="padding-left:20px;">
-  <ion-label>
-    <h1>Wednesday</h1>
-    <p>2022-06-15</p>
-  </ion-label>
-</div>
-<br>
+  <br />
+  <div style="padding-left: 20px">
+    <ion-label>
+      <h1>Wednesday</h1>
+      <p>2022-06-15</p>
+    </ion-label>
+  </div>
+  <br />
   <ion-grid>
     <ion-row>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="success">Stage 1</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          12:00 - 14:30
-          20:00 - 22:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="warning">Stage 2</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          12:00 - 14:30
-          20:00 - 22:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="secondary">Stage 3</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 06:30
-          12:00 - 14:30
-          20:00 - 22:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="danger">Stage 4</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 06:30
-          12:00 - 14:30
-          20:00 - 22:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="primary">Stage 5</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 06:30
-          12:00 - 14:30
-          20:00 - 00:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="tertiary">Stage 6</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 06:30
-          12:00 - 14:30
-          20:00 - 00:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="medium">Stage 7</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 08:30
-          12:00 - 14:30
-          20:00 - 00:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title color="dark">Stage 8</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          04:00 - 08:30
-          12:00 - 14:30
-          20:00 - 00:30
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="success">Stage 1</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content> 12:00 - 14:30 20:00 - 22:30 </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="warning">Stage 2</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content> 12:00 - 14:30 20:00 - 22:30 </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="secondary">Stage 3</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 06:30 12:00 - 14:30 20:00 - 22:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="danger">Stage 4</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 06:30 12:00 - 14:30 20:00 - 22:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="primary">Stage 5</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 06:30 12:00 - 14:30 20:00 - 00:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="tertiary">Stage 6</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 06:30 12:00 - 14:30 20:00 - 00:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="medium">Stage 7</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 08:30 12:00 - 14:30 20:00 - 00:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title color="dark">Stage 8</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            04:00 - 08:30 12:00 - 14:30 20:00 - 00:30
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
-
