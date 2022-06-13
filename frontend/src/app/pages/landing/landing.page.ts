@@ -6,19 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing.page.scss'],
 })
 export class LandingPage implements OnInit {
-  
   areas: [] = [];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.getAllAreas();
   }
 
-  getAllAreas(){
+  getAllAreas() {
     // console.log(JSON.parse(localStorage.getItem('location')))
-    console.log(localStorage.getItem('location'))
+    console.log(localStorage.getItem('location'));
     this.areas = JSON.parse(localStorage.getItem('location'));
   }
-
 }
