@@ -86,7 +86,7 @@ export class AreaPage implements OnInit {
           id: 'confirm-button',
           handler: () => {
             // console.log(this.areas.filter((area) => area.Id === id));
-            const storedLocation = JSON.parse(localStorage.getItem('location'));
+            const storedLocation = localStorage.getItem('location') ? JSON.parse(localStorage.getItem('location')) : [];
             const places = [
               ...storedLocation,
               ...this.areas.filter((area) => area.Id === id),
