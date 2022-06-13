@@ -4,6 +4,8 @@ import { FormControl } from '@angular/forms';
 import { combineLatest, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { EskomApiService } from '../../services/eskom-api.service';
+import { SearchSuburb } from 'eskom-loadshedding-api';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-area',
@@ -15,7 +17,8 @@ export class AreaPage implements OnInit {
   public searchField: FormControl;
   constructor(
     private alertCtrl: AlertController,
-    private eskomApi: EskomApiService
+    private eskomApi: EskomApiService,
+    private route: Router
   ) {
     this.searchField = new FormControl('');
   }
@@ -63,8 +66,44 @@ export class AreaPage implements OnInit {
     await alert.present();
   }
 
+  async presentAlertAddAreaConfirm(id: number, name: string, province: string) {
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: `Add area`,
+      message: `Do you want to add ${name} (${province}) to your areas?`,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          id: 'cancel-button',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          },
+        },
+        {
+          text: 'OK',
+          id: 'confirm-button',
+          handler: () => {
+            // console.log(this.areas.filter((area) => area.Id === id));
+            const storedLocation = JSON.parse(localStorage.getItem('location'));
+            const places = [
+              ...storedLocation,
+              ...this.areas.filter((area) => area.Id === id),
+            ];
+            // console.log('places here 📍:', places);
+            localStorage.setItem('location', JSON.stringify(places));
+            this.route.navigateByUrl('/');
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
   sayHi() {
-    console.log('Hello from search');
+    console.log('Hello from ');
   }
 }
 

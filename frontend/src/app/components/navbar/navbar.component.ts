@@ -13,17 +13,6 @@ export class NavbarComponent implements OnInit {
   constructor(private route:Router) { }
 
   ngOnInit() {
-    this.route.events.subscribe(
-      (event: any) => {
-        if (event instanceof NavigationEnd) {
-          if(this.route.url !== '/landing'){
-            this.isHome = false
-          }else{
-            this.isHome = true;
-          }
-        }
-      }
-    );
   }
 
 

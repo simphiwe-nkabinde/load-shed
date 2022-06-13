@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <ion-content fullscreen>
   <ion-grid>
       <ion-row class="ion-justify-content-center">
@@ -12,14 +14,37 @@
                   <ion-card-content>
                       <p class="text-dark">While no loadshedding is planned, but it could be implemented at short notice in the evenings.
                       We'll let you know if anything changes!</p>
-                      <ion-toolbar color="success" class="rounded shadow mt-2 p-2 text-center">
-                         <p class="fs-2 m-0 fw-bold d-flex align-items-center justify-content-center"><ion-icon name="git-network" class="pe-1"></ion-icon> No loadshedding</p>
+                      <ion-card-content class="ion-toolbar rounded mt-2 p-2 text-center">
+                         <p class="fs-2 m-0 d-flex align-items-center justify-content-center"><ion-icon name="git-network" class="pe-1"></ion-icon> No loadshedding</p>
                          <p class="fs-6">Since 10 days ago</p>
-                      </ion-toolbar>
+                      </ion-card-content>
 
+                      <ion-grid *ngIf="areas.length">
+                        <ion-row *ngFor="let area of areas">
+                            <ion-col>
+                                <ion-card routerLink="/" role="button">
+                                    <ion-item>
+                                        <ion-buttons slot="start" class="d-flex flex-column py-2">
+                                            <ion-card-title class="mb-1">{{ area.Name }}</ion-card-title>
+                                            <p class="fs-6 text-secondary">{{ area.MunicipalityName }}</p>
+                                        </ion-buttons>
+                                        
+
+                                        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+                                    </ion-item>
+                                    
+                                    <ion-item href="#" class="ion-activated" color="success">
+                                        <ion-label class="text-white">No outages expected</ion-label>
+                                      </ion-item>
+                                </ion-card>
+                            </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                      
                       <ion-button routerLink="/area" role="button" color="white" expand="full" shape="round" class="text-danger mt-3 fw-bold">
                           Add Area
                       </ion-button>
+                      
                   </ion-card-content>
               </ion-card>
           </ion-col>
