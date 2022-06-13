@@ -22,7 +22,7 @@
                       <ion-grid *ngIf="areas.length">
                         <ion-row *ngFor="let area of areas">
                             <ion-col>
-                                <ion-card routerLink="/" role="button">
+                                <ion-card routerLink="/areas-stages/{{ area.Id }}" role="button">
                                     <ion-item>
                                         <ion-buttons slot="start" class="d-flex flex-column py-2">
                                             <ion-card-title class="mb-1">{{ area.Name }}</ion-card-title>
