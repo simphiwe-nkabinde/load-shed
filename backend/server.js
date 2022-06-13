@@ -41,14 +41,30 @@ app.get('/getSuburbSchedule/:id/:loadSheddingStage', (req, res) => {
     let suburbId = req.params.id
     const stage = req.params.loadSheddingStage
     axios(`https://loadshedding.eskom.co.za/LoadShedding/GetScheduleM/${suburbId}/${stage}/_/1`)
-    .then(data => res.send(data.data))
+    .then(
+        data => {
+            console.log('header: ', data.headers['content-type']);
+            let contentType = data.headers['content-type'];
+            if (contentType.includes('text/html')) {
+                return res.json({err: 'no schedule found for area'})
+            }
+            res.send(data.data)
+        })
     .catch(err => res.send(err))
 })
 //get Full Suburb Schedule
 app.get('/getFullSuburbSchedule/:id', (req, res) => {
     let suburbId = req.params.id
     axios(`https://loadshedding.eskom.co.za/LoadShedding/GetScheduleM/${suburbId}/1/_/1`)
-    .then(data => res.send(data.data))
+    .then(
+        data => {
+            console.log('header: ', data.headers['content-type']);
+            let contentType = data.headers['content-type'];
+            if (contentType.includes('text/html')) {
+                return res.json({err: 'no schedule found for area'})
+            }
+            res.send(data.data)
+        })
     .catch(err => res.send(err))
 })
 
