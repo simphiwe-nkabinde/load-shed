@@ -14,3 +14,16 @@ ion-card-content.ion-toolbar{
     color: #fff;
     background-color: #52CC7A;
 }
+
+.grid{
+    --ion-grid-padding: 0;
+}
+
+.grid-col{
+    --ion-grid-column-padding: 0;
+}
+
+.ion-card{
+    margin-left: 0;
+    margin-right: 0;
+}

@@ -19,13 +19,13 @@
                          <p class="fs-6">Since 10 days ago</p>
                       </ion-card-content>
 
-                      <ion-grid *ngIf="areas.length">
+                      <ion-grid *ngIf="areas.length" class="grid">
                         <ion-row *ngFor="let area of areas">
-                            <ion-col>
-                                <ion-card routerLink="/area-stages/{{ area.Id }}" role="button">
+                            <ion-col class="grid-col">
+                                <ion-card routerLink="/area-stages/{{ area.Id }}" role="button" class="ion-card">
                                     <ion-item>
                                         <ion-buttons slot="start" class="d-flex flex-column py-2">
-                                            <ion-card-title class="mb-1">{{ area.Name }}</ion-card-title>
+                                            <ion-card-title class="mb-1 fs-38">{{ area.Name }}</ion-card-title>
                                             <p class="fs-6 text-secondary">{{ area.MunicipalityName }}</p>
                                         </ion-buttons>
                                         
