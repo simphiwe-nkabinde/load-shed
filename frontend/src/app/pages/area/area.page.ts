@@ -31,7 +31,7 @@ export class AreaPage implements OnInit {
     if (this.searchField.value) {
       this.eskomApi.searchSuburbs(this.searchField.value).subscribe((res) => {
         this.areas = [...res];
-        console.log('Im here 📍', this.areas);
+        // console.log('Im here 📍', this.areas);
       });
     } else {
       this.areas = [];
@@ -88,7 +88,8 @@ export class AreaPage implements OnInit {
             // console.log(this.areas.filter((area) => area.Id === id));
             const place = this.areas.filter((area) => area.Id === id);
             localStorage.setItem('location', JSON.stringify(place));
-            this.route.navigateByUrl('/')
+            window.dispatchEvent( new Event('storage') )
+            this.route.navigateByUrl('/');
           },
         },
       ],
