@@ -22,7 +22,7 @@
                       <ion-grid *ngIf="areas.length">
                         <ion-row *ngFor="let area of areas">
                             <ion-col>
-                                <ion-card routerLink="/areas-stages/{{ area.Id }}" role="button">
+                                <ion-card routerLink="/area-stages/{{ area.Id }}" role="button">
                                     <ion-item>
                                         <ion-buttons slot="start" class="d-flex flex-column py-2">
                                             <ion-card-title class="mb-1">{{ area.Name }}</ion-card-title>
@@ -33,7 +33,7 @@
                                         <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
                                     </ion-item>
                                     
-                                    <ion-item href="#" class="ion-activated" color="success">
+                                    <ion-item class="ion-activated" color="success">
                                         <ion-label class="text-white">No outages expected</ion-label>
                                       </ion-item>
                                 </ion-card>

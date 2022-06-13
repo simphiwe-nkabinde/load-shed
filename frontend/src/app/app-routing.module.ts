@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/area/area.module').then( m => m.AreaPageModule)
   },
   {
-    path: 'area-stages',
+    path: 'area-stages/:id',
     loadChildren: () => import('./pages/area-stages/area-stages.module').then( m => m.AreaStagesPageModule)
   },
   {
