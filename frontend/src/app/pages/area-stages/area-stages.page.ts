@@ -21,7 +21,7 @@ export class AreaStagesPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.weekDates = this.currentweekDates()
+    this.weekDates = this.currentWeekDates()
     this.fetchAreaStages();
     this.getSuburb();
   }
@@ -46,24 +46,30 @@ export class AreaStagesPage implements OnInit {
       }
     });
   }
+   currentWeekDates() {
+    const dateObj = new Date()
+    const date = dateObj.getDate()
+    const month = dateObj.getMonth()
+    const day = dateObj.getDay()
 
-  //return [Date] [monday, ..., sunday]
-  currentweekDates(): number[] {
-    let weekDateArray: number[]
-    let currentWeekday = new Date().getDay()
-    weekDateArray[currentWeekday] = Date.now()
 
-    // count forward until sunday
-    for (let i = currentWeekday; i < 7; i++) {
-      weekDateArray[i] = new Date().setDate(new Date().getDate()+i)
+    const dayStringArray = ['sunday', 'monday', 'tuesday','wednesday','thursday', 'friday', 'saturday']
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+
+    let dataArray = [];
+
+
+    const setDate_ToString = (day, date, month) => `${dayStringArray[day]} / ${date} / ${months[month]}`
+
+
+    for (let i = 1; i < dayStringArray.length; i++) {
+        dataArray.push(setDate_ToString(i, date + i, month))
     }
 
-    // count bckwards until monday
-    for (let i = currentWeekday - 1; i >= 0; i--) {
-      weekDateArray[i] = new Date().setDate(new Date().getDate()-i)
-    }
-    return weekDateArray;
-  }
+    return dataArray
+}
+
 
 }
 
