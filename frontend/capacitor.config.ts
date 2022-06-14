@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'com.load-shed',
   appName: 'load-shed',
   webDir: 'www',
   bundledWebRuntime: false
