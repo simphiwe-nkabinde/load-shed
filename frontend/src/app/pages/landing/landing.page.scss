@@ -1,0 +1,29 @@
+.column{
+    margin-top: 3rem;
+}
+
+ion-button { 
+    --box-shadow: 0 0 5px rgba(0,0,0,0.6);
+}
+
+ion-card-content.ion-toolbar > p:first-child{
+    font-weight: bold;
+}
+
+ion-card-content.ion-toolbar{
+    color: #fff;
+    background-color: #52CC7A;
+}
+
+.grid{
+    --ion-grid-padding: 0;
+}
+
+.grid-col{
+    --ion-grid-column-padding: 0;
+}
+
+.ion-card{
+    margin-left: 0;
+    margin-right: 0;
+}
