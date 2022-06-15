@@ -26,8 +26,9 @@
               <ion-item [button]="true" [detail]="false">
                 <ion-label>Disable Alerts</ion-label>
               </ion-item>
-              <ion-item [button]="true" [detail]="false">
-                <ion-label>Delete</ion-label>
+              <ion-item [button]="true" [detail]="false" (click)="presentAlertConfirm()">
+                <ion-label>Delete
+                </ion-label>
               </ion-item>
               <ion-item [button]="true" [detail]="false">
                 <ion-label>Schedule Problem</ion-label>
@@ -73,13 +74,12 @@
   <div *ngFor="let date of weekDates">
     <div style="padding-left: 20px">
       <ion-label>
-        <h1>{{date}}</h1>
-        <!-- <p>{{date}}</p> -->
+        <h1>{{toDay(date)}}</h1>
+        <p>{{toDate(date)}}</p>
       </ion-label>
     </div>
     <br />
     <ion-grid>
-      <!-- <div *ngIf="!noLoadshedding"></div> -->
       <ion-row>
         <ion-col>
           <ion-card>

@@ -21,7 +21,7 @@ export class LandingPage implements OnInit {
       window.addEventListener('storage', (e) => {
         return this.areas = JSON.parse(localStorage.getItem('location'));
       })
-    }
-    
+    }  
   }
+
 }
