@@ -13,7 +13,7 @@ import {
 } from 'eskom-loadshedding-api';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'http://10.1.0.254:3000';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +22,7 @@ export class EskomApiService {
   constructor(private http: HttpClient) {}
 
   getCurrentStatus(): Observable<any> {
+    
     return this.http.get(`${baseUrl}/getCurrentStatus`);
   }
 
